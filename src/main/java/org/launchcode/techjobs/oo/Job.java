@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import org.junit.Before;
+
 import java.util.Objects;
 
 public class Job {
@@ -35,7 +37,7 @@ public class Job {
     //  match.
 
     @Override
-    public boolean equals(Object o) {
+    public  boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
@@ -95,4 +97,23 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    @Override
+    public String toString() {
+
+        if (name == null && employer == null && location == null && positionType == null && coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        } else {
+//            return System.lineSeparator() + "ID: " +getId()+
+            return System.lineSeparator() + "ID: " +getId()+
+                    "\nName: " + (getName().isEmpty() ? "Data not available" : name) +
+                    "\nEmployer: " + (getEmployer().getValue().isEmpty() ? "Data not available" : employer.getValue()) +
+                    "\nLocation: " + (getLocation().getValue().isEmpty() ? "Data not available" : location.getValue()) +
+                    "\nPosition Type: " + (getPositionType().getValue().isEmpty() ? "Data not available" : positionType.getValue()) +
+                    "\nCore Competency: " + (getCoreCompetency().getValue().isEmpty() ? "Data not available" : coreCompetency.getValue()) + System.lineSeparator();
+        }
+
+    }
 }
+
+
